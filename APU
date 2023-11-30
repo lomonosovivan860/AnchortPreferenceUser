@@ -1,0 +1,24 @@
+}
+
+struct AdvancedCombineView: View {
+    
+    @StateObject private var vm = AdvancedCombineViewModel()
+    
+    var body: some View {
+        ScrollView {
+            VStack {
+                ForEach(vm.data, id: \.self) { text in
+                    Text(text)
+                        .font(.largeTitle)
+                }
+            }
+            if !vm.error.isEmpty {
+                Text(vm.error)
+            }
+        }
+    }
+}
+
+struct AdvancedCombine_Previews: PreviewProvider {
+    static var previews: some View {
+        AdvancedCombineView()
